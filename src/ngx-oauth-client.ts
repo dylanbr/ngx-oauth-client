@@ -163,7 +163,7 @@ export abstract class NgxOAuthClient {
   }
 
   setToken(token: NgxOAuthResponse) {
-    localStorage.setItem(this.fetchStorageName(), JSON.stringify(token));
+    this.fetchConfig("storage").setItem(this.fetchStorageName(), JSON.stringify(token));
   }
 
   /**
@@ -173,7 +173,7 @@ export abstract class NgxOAuthClient {
    */
   fetchToken(key?: string): any {
 
-    const token = localStorage.getItem(this.fetchStorageName());
+    const token = this.fetchConfig("storage").getItem(this.fetchStorageName());
     if (token) {
       const parsedToken = JSON.parse(token);
       if (key && parsedToken.hasOwnProperty(key)) {
@@ -190,7 +190,7 @@ export abstract class NgxOAuthClient {
    *
    */
   clearToken() {
-    localStorage.removeItem(this.fetchStorageName());
+    this.fetchConfig("storage").removeItem(this.fetchStorageName());
   }
 
   /**
@@ -262,7 +262,7 @@ export abstract class NgxOAuthClient {
    */
   protected fetchStorageName(): string {
     const prefix: string = this.fetchConfig('storage_prefix');
-    const suffix = 'auth_token';
+    const suffix: string = this.fetchConfig('storage_suffix','auth_token');
 
     let token = '';
     if (prefix) {
@@ -296,6 +296,9 @@ export abstract class NgxOAuthClient {
 export function Configuration(config: NgxOAuthConfig) {
   return function <TFunction extends Function>(Target: TFunction): TFunction {
     Target.prototype.getConfig = function (): NgxOAuthConfig {
+      if(!config.storage) {
+		  config.storage = localStorage;
+      }      
       return config;
     };
     return Target;
