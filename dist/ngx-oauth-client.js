@@ -135,7 +135,7 @@ var NgxOAuthClient = (function () {
         });
     };
     NgxOAuthClient.prototype.setToken = function (token) {
-        localStorage.setItem(this.fetchStorageName(), JSON.stringify(token));
+        this.fetchConfig("storage").setItem(this.fetchStorageName(), JSON.stringify(token));
     };
     /**
      *
@@ -143,7 +143,7 @@ var NgxOAuthClient = (function () {
      * @returns {any}
      */
     NgxOAuthClient.prototype.fetchToken = function (key) {
-        var token = localStorage.getItem(this.fetchStorageName());
+        var token = this.fetchConfig("storage").getItem(this.fetchStorageName());
         if (token) {
             var parsedToken = JSON.parse(token);
             if (key && parsedToken.hasOwnProperty(key)) {
@@ -159,7 +159,7 @@ var NgxOAuthClient = (function () {
      *
      */
     NgxOAuthClient.prototype.clearToken = function () {
-        localStorage.removeItem(this.fetchStorageName());
+        this.fetchConfig("storage").removeItem(this.fetchStorageName());
     };
     /**
      * Performs an HTTP request
@@ -226,7 +226,7 @@ var NgxOAuthClient = (function () {
      */
     NgxOAuthClient.prototype.fetchStorageName = function () {
         var prefix = this.fetchConfig('storage_prefix');
-        var suffix = 'auth_token';
+        var suffix = this.fetchConfig('storage_suffix', 'auth_token');
         var token = '';
         if (prefix) {
             token += prefix;
@@ -265,6 +265,9 @@ exports.NgxOAuthClient = NgxOAuthClient;
 function Configuration(config) {
     return function (Target) {
         Target.prototype.getConfig = function () {
+            if (!config.storage) {
+                config.storage = localStorage;
+            }
             return config;
         };
         return Target;
