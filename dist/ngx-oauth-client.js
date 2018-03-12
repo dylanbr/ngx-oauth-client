@@ -253,7 +253,7 @@ var NgxOAuthClient = /** @class */ (function () {
         });
     };
     NgxOAuthClient.prototype.setToken = function (token) {
-        localStorage.setItem(this.fetchStorageName(), JSON.stringify(token));
+        this.fetchConfig("storage").setItem(this.fetchStorageName(), JSON.stringify(token));
     };
     /**
      *
@@ -414,7 +414,7 @@ var NgxOAuthClient = /** @class */ (function () {
        */
     function () {
         var prefix = this.fetchConfig('storage_prefix');
-        var suffix = 'auth_token';
+        var suffix = this.fetchConfig('storage_suffix', 'auth_token');
         var token = '';
         if (prefix) {
             token += prefix;
@@ -463,6 +463,9 @@ exports.NgxOAuthClient = NgxOAuthClient;
 function Configuration(config) {
     return function (Target) {
         Target.prototype.getConfig = function () {
+            if (!config.storage) {
+                config.storage = localStorage;
+            }
             return config;
         };
         return Target;

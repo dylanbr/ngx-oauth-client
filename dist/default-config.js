@@ -5,5 +5,6 @@ exports.DEFAULT_CFG = {
     token: 'oauth/token',
     key: 'my_key',
     secret: 'my_secret',
+    storage: localStorage
 };
 //# sourceMappingURL=default-config.js.map
