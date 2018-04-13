@@ -1,13 +1,11 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var http_1 = require("@angular/common/http");
-var ngx_request_1 = require("./ngx-request");
-require("rxjs/add/operator/map");
-require("rxjs/add/operator/catch");
-require("rxjs/observable/throw");
-require("rxjs/add/observable/empty");
-require("rxjs/add/operator/skip");
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { NgxRequest } from './ngx-request';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/observable/throw';
+import 'rxjs/add/observable/empty';
+import 'rxjs/add/operator/skip';
 var NgxOAuthClient = /** @class */ (function () {
     /**
      *
@@ -246,7 +244,7 @@ var NgxOAuthClient = /** @class */ (function () {
                 params.push(key + "=" + payload[key]);
             }
         }
-        var headers = new http_1.HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+        var headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
         return this.http.post(config.host + '/' + config.token, params.join('&'), { headers: headers }).map(function (res) {
             _this.setToken(res);
             return res;
@@ -271,7 +269,7 @@ var NgxOAuthClient = /** @class */ (function () {
        * @returns {any}
        */
     function (key) {
-        var token = localStorage.getItem(this.fetchStorageName());
+        var token = this.fetchConfig("storage").getItem(this.fetchStorageName());
         if (token) {
             var parsedToken = JSON.parse(token);
             if (key && parsedToken.hasOwnProperty(key)) {
@@ -293,11 +291,7 @@ var NgxOAuthClient = /** @class */ (function () {
        *
        */
     function () {
-<<<<<<< HEAD
-        localStorage.removeItem(this.fetchStorageName());
-=======
         this.fetchConfig("storage").removeItem(this.fetchStorageName());
->>>>>>> New build using Angular 5
     };
     /**
      * Performs an HTTP request
@@ -328,7 +322,7 @@ var NgxOAuthClient = /** @class */ (function () {
        */
     function (method, endpoint, payload, options) {
         var _this = this;
-        var request = new ngx_request_1.NgxRequest(method, this.buildEndpoint(endpoint));
+        var request = new NgxRequest(method, this.buildEndpoint(endpoint));
         if (method === 'GET' && payload && Object.keys(payload).length > 0) {
             request.setParams(payload);
         }
@@ -341,7 +335,7 @@ var NgxOAuthClient = /** @class */ (function () {
             .setObserve(this.fetchOption(options, 'observe', 'body'))
             .setResponseType(this.fetchOption(options, 'responseType', 'json'))
             .setWithCredentials(this.fetchOption(options, 'withCredentials', false));
-        if (options && options.params instanceof http_1.HttpParams) {
+        if (options && options.params instanceof HttpParams) {
             request.setHttpParams(options.params);
         }
         return this.http.request(method, this.buildEndpoint(endpoint), this.requestInterceptor(request))
@@ -451,20 +445,20 @@ var NgxOAuthClient = /** @class */ (function () {
         return this.getConfig().host.replace(/\/$/, '') + '/' + endpoint;
     };
     NgxOAuthClient.decorators = [
-        { type: core_1.Injectable },
+        { type: Injectable },
     ];
     /** @nocollapse */
     NgxOAuthClient.ctorParameters = function () { return [
-        { type: http_1.HttpClient, },
+        { type: HttpClient, },
     ]; };
     return NgxOAuthClient;
 }());
-exports.NgxOAuthClient = NgxOAuthClient;
+export { NgxOAuthClient };
 /**
  * Set the base URL of REST resource
  * @param {Object} config - API confiugration
  */
-function Configuration(config) {
+export function Configuration(config) {
     return function (Target) {
         Target.prototype.getConfig = function () {
             if (!config.storage) {
@@ -475,12 +469,11 @@ function Configuration(config) {
         return Target;
     };
 }
-exports.Configuration = Configuration;
 /**
  * Set default headers for every method of the RESTClient
  * @param {Object} headers - deafult headers in a key-value pair
  */
-function DefaultHeaders(headers) {
+export function DefaultHeaders(headers) {
     return function (Target) {
         Target.prototype.getDefaultHeaders = function () {
             return headers;
@@ -488,5 +481,4 @@ function DefaultHeaders(headers) {
         return Target;
     };
 }
-exports.DefaultHeaders = DefaultHeaders;
 //# sourceMappingURL=ngx-oauth-client.js.map

@@ -1,1 +1,1 @@
-[{"__symbolic":"module","version":4,"metadata":{"NgxOAuthConfig":{"__symbolic":"interface"}}}]
+[{"__symbolic":"module","version":4,"metadata":{"NgxOAuthStorage":{"__symbolic":"class","members":{"getItem":[{"__symbolic":"method"}],"removeItem":[{"__symbolic":"method"}],"setItem":[{"__symbolic":"method"}]}},"NgxOAuthConfig":{"__symbolic":"interface"}}}]
