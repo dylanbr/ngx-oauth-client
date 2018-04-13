@@ -1,11 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 import { NgxOAuthConfig } from './config-interface';
 import { HttpClient } from '@angular/common/http';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/observable/throw';
-import 'rxjs/add/observable/empty';
-import 'rxjs/add/operator/skip';
 import { NgxOAuthResponse } from './ngx-oauth-response';
 export declare abstract class NgxOAuthClient {
     /**
