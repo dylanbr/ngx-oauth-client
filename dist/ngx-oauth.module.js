@@ -5,17 +5,15 @@ var http_1 = require("@angular/common/http");
 var NgxOAuthModule = (function () {
     function NgxOAuthModule() {
     }
+    NgxOAuthModule.decorators = [
+        { type: core_1.NgModule, args: [{
+                    declarations: [],
+                    imports: [http_1.HttpClientModule],
+                    exports: [http_1.HttpClientModule],
+                    providers: [],
+                },] },
+    ];
     return NgxOAuthModule;
 }());
-NgxOAuthModule.decorators = [
-    { type: core_1.NgModule, args: [{
-                declarations: [],
-                imports: [http_1.HttpClientModule],
-                exports: [http_1.HttpClientModule],
-                providers: [],
-            },] },
-];
-/** @nocollapse */
-NgxOAuthModule.ctorParameters = function () { return []; };
 exports.NgxOAuthModule = NgxOAuthModule;
 //# sourceMappingURL=ngx-oauth.module.js.map
