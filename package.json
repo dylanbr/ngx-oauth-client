@@ -54,7 +54,7 @@
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
     "@types/core-js": "^0.9.41",
-    "@types/jasmine": "2.5.38",
+    "@types/jasmine": "2.5.36",
     "@types/node": "~6.0.60",
     "angular2-template-loader": "^0.6.2",
     "bootstrap": "^3.3.7",

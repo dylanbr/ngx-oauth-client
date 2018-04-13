@@ -293,7 +293,11 @@ var NgxOAuthClient = /** @class */ (function () {
        *
        */
     function () {
+<<<<<<< HEAD
         localStorage.removeItem(this.fetchStorageName());
+=======
+        this.fetchConfig("storage").removeItem(this.fetchStorageName());
+>>>>>>> New build using Angular 5
     };
     /**
      * Performs an HTTP request
