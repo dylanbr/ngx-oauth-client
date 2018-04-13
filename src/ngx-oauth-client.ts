@@ -3,11 +3,7 @@ import {Observable} from 'rxjs/Observable';
 import {NgxOAuthConfig} from './config-interface';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {NgxRequest} from './ngx-request';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/observable/throw';
-import 'rxjs/add/observable/empty';
-import 'rxjs/add/operator/skip';
+import { map, catchError } from 'rxjs/operators';
 import {NgxOAuthResponse} from './ngx-oauth-response';
 
 @Injectable()
@@ -156,10 +152,12 @@ export abstract class NgxOAuthClient {
 
     const headers = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'});
 
-    return this.http.post(config.host + '/' + config.token, params.join('&'), {headers}).map((res: NgxOAuthResponse) => {
-      this.setToken(res);
-      return res;
-    });
+    return this.http.post(config.host + '/' + config.token, params.join('&'), {headers}).pipe(
+      map((res: NgxOAuthResponse) => {
+        this.setToken(res);
+        return res;
+      })
+    );
   }
 
   setToken(token: NgxOAuthResponse) {
@@ -223,9 +221,10 @@ export abstract class NgxOAuthClient {
       request.setHttpParams(options.params);
     }
 
-    return this.http.request(method, this.buildEndpoint(endpoint), this.requestInterceptor(request))
-      .map(res => this.responseInterceptor(request, res))
-      .catch(err => this.errorInterceptor(request, err));
+    return this.http.request(method, this.buildEndpoint(endpoint), this.requestInterceptor(request)).pipe(
+      map(res => this.responseInterceptor(request, res)),
+      catchError(err => this.errorInterceptor(request, err))
+	);
   }
 
   /**

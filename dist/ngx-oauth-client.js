@@ -1,11 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { NgxRequest } from './ngx-request';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/observable/throw';
-import 'rxjs/add/observable/empty';
-import 'rxjs/add/operator/skip';
+import { map, catchError } from 'rxjs/operators';
 var NgxOAuthClient = /** @class */ (function () {
     /**
      *
@@ -245,10 +241,10 @@ var NgxOAuthClient = /** @class */ (function () {
             }
         }
         var headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
-        return this.http.post(config.host + '/' + config.token, params.join('&'), { headers: headers }).map(function (res) {
+        return this.http.post(config.host + '/' + config.token, params.join('&'), { headers: headers }).pipe(map(function (res) {
             _this.setToken(res);
             return res;
-        });
+        }));
     };
     NgxOAuthClient.prototype.setToken = function (token) {
         this.fetchConfig("storage").setItem(this.fetchStorageName(), JSON.stringify(token));
@@ -338,9 +334,7 @@ var NgxOAuthClient = /** @class */ (function () {
         if (options && options.params instanceof HttpParams) {
             request.setHttpParams(options.params);
         }
-        return this.http.request(method, this.buildEndpoint(endpoint), this.requestInterceptor(request))
-            .map(function (res) { return _this.responseInterceptor(request, res); })
-            .catch(function (err) { return _this.errorInterceptor(request, err); });
+        return this.http.request(method, this.buildEndpoint(endpoint), this.requestInterceptor(request)).pipe(map(function (res) { return _this.responseInterceptor(request, res); }), catchError(function (err) { return _this.errorInterceptor(request, err); }));
     };
     /**
      * Fetch options and fallback to config defaults
