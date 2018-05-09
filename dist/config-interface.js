@@ -1,4 +1,4 @@
-var NgxOAuthStorage = (function () {
+var NgxOAuthStorage = /** @class */ (function () {
     function NgxOAuthStorage() {
     }
     return NgxOAuthStorage;

@@ -16,7 +16,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { Configuration, NgxOAuthClient } from './ngx-oauth-client';
 import { Injectable } from '@angular/core';
-var NgxTestClientTwo = (function (_super) {
+var NgxTestClientTwo = /** @class */ (function (_super) {
     __extends(NgxTestClientTwo, _super);
     function NgxTestClientTwo() {
         return _super !== null && _super.apply(this, arguments) || this;

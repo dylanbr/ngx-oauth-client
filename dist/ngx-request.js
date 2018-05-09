@@ -1,5 +1,5 @@
 import { HttpHeaders, HttpParams } from '@angular/common/http';
-var NgxRequest = (function () {
+var NgxRequest = /** @class */ (function () {
     function NgxRequest(method, url) {
         this.method = method;
         this.url = url;

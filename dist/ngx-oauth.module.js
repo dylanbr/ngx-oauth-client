@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-var NgxOAuthModule = (function () {
+var NgxOAuthModule = /** @class */ (function () {
     function NgxOAuthModule() {
     }
     NgxOAuthModule.decorators = [

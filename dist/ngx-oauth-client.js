@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { NgxRequest } from './ngx-request';
 import { map, catchError } from 'rxjs/operators';
-var NgxOAuthClient = (function () {
+var NgxOAuthClient = /** @class */ (function () {
     /**
      *
      * @param {HttpClient} http
