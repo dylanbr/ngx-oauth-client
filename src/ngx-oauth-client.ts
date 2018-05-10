@@ -12,7 +12,7 @@ export abstract class NgxOAuthClient {
    *
    * @param {HttpClient} http
    */
-  constructor(private http: HttpClient) { }
+  constructor(protected http: HttpClient) { }
 
   getConfig(): any {
   }
