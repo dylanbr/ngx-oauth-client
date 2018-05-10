@@ -3,10 +3,7 @@ import { NgxOAuthConfig } from './config-interface';
 import { HttpClient } from '@angular/common/http';
 import { NgxOAuthResponse } from './ngx-oauth-response';
 export declare abstract class NgxOAuthClient {
-    /**
-     * @param {HttpClient} http
-     */
-    protected http: HttpClient;
+    private http;
     /**
      *
      * @param {HttpClient} http

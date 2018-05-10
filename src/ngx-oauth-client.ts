@@ -8,19 +8,11 @@ import {NgxOAuthResponse} from './ngx-oauth-response';
 
 @Injectable()
 export abstract class NgxOAuthClient {
-
-  /**
-   * @param {HttpClient} http
-   */
-  protected http: HttpClient;
-
   /**
    *
    * @param {HttpClient} http
    */
-  constructor(http: HttpClient) {
-    this.http = http;
-  }
+  constructor(private http: HttpClient) { }
 
   getConfig(): any {
   }
