@@ -43,17 +43,7 @@ var NgxRequest = /** @class */ (function () {
      * @param {boolean} value
      * @returns {NgxRequest}
      */
-    /**
-       *
-       * @param {boolean} value
-       * @returns {NgxRequest}
-       */
-    NgxRequest.prototype.setWithCredentials = /**
-       *
-       * @param {boolean} value
-       * @returns {NgxRequest}
-       */
-    function (value) {
+    NgxRequest.prototype.setWithCredentials = function (value) {
         this.withCredentials = value;
         return this;
     };

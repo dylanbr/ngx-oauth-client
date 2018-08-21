@@ -40,21 +40,21 @@
     "*.md"
   ],
   "peerDependencies": {
-    "@angular/core": ">=5.0.0 <7.0.0"
+    "@angular/core": "^6.1.0"
   },
   "devDependencies": {
-    "@angular/cli": "^6.0.0",
-    "@angular/common": "^6.0.0",
-    "@angular/compiler": "^6.0.0",
-    "@angular/compiler-cli": "^6.0.0",
-    "@angular/core": "^6.0.0",
-    "@angular/forms": "^6.0.0",
-    "@angular/platform-browser": "^6.0.0",
-    "@angular/platform-browser-dynamic": "^6.0.0",
-    "@angular/router": "^6.0.0",
-    "@types/core-js": "^0.9.41",
-    "@types/jasmine": "2.5.36",
-    "@types/node": "~6.0.60",
+    "@angular/cli": "~6.1.4",
+    "@angular/common": "^6.1.0",
+    "@angular/compiler": "^6.1.0",
+    "@angular/compiler-cli": "^6.1.0",
+    "@angular/core": "^6.1.0",
+    "@angular/forms": "^6.1.0",
+    "@angular/platform-browser": "^6.1.0",
+    "@angular/platform-browser-dynamic": "^6.1.0",
+    "@angular/router": "^6.1.0",
+    "@types/core-js": "^2.5.0",
+    "@types/jasmine": "~2.8.6",
+    "@types/node": "~8.9.4",
     "angular2-template-loader": "^0.6.2",
     "bootstrap": "^3.3.7",
     "bootstrap-material-design": "^0.5.10",
@@ -65,13 +65,13 @@
     "electron": "^1.6.6",
     "gh-pages": "^0.12.0",
     "intl": "^1.2.5",
-    "jasmine-core": "~2.8.0",
+    "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
-    "karma": "~2.0.0",
-    "karma-chrome-launcher": "~2.0.0",
+    "karma": "~1.7.1",
+    "karma-chrome-launcher": "~2.2.0",
     "karma-cli": "~1.0.1",
-    "karma-coverage-istanbul-reporter": "^1.2.1",
-    "karma-jasmine": "~1.1.0",
+    "karma-coverage-istanbul-reporter": "^2.0.0",
+    "karma-jasmine": "~1.1.1",
     "karma-jasmine-html-reporter": "^0.2.2",
     "karma-phantomjs-launcher": "^1.0.4",
     "marked": "^0.3.6",
@@ -85,6 +85,6 @@
     "wallaby-webpack": "0.0.38",
     "web-animations-js": "^2.2.5",
     "zone.js": "^0.8.4",
-    "@angular-devkit/build-angular": "~0.6.0"
+    "@angular-devkit/build-angular": "~0.7.4"
   }
 }
