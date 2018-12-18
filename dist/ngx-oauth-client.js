@@ -1,3 +1,4 @@
+import * as tslib_1 from "tslib";
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { NgxRequest } from './ngx-request';
@@ -240,13 +241,10 @@ var NgxOAuthClient = /** @class */ (function () {
         }
         return this.getConfig().host.replace(/\/$/, '') + '/' + endpoint;
     };
-    NgxOAuthClient.decorators = [
-        { type: Injectable },
-    ];
-    /** @nocollapse */
-    NgxOAuthClient.ctorParameters = function () { return [
-        { type: HttpClient }
-    ]; };
+    NgxOAuthClient = tslib_1.__decorate([
+        Injectable(),
+        tslib_1.__metadata("design:paramtypes", [HttpClient])
+    ], NgxOAuthClient);
     return NgxOAuthClient;
 }());
 export { NgxOAuthClient };

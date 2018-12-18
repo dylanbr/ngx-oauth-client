@@ -26,6 +26,12 @@
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "demo/src/environments/environment.ts",
+                  "with": "demo/src/environments/environment.prod.ts"
+                }
+              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -35,10 +41,11 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "fileReplacements": [
+              "budgets": [
                 {
-                  "replace": "demo/src/environments/environment.ts",
-                  "with": "demo/src/environments/environment.prod.ts"
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 }
               ]
             }
@@ -83,7 +90,9 @@
               "demo/src/tsconfig.app.json",
               "demo/src/tsconfig.spec.json"
             ],
-            "exclude": []
+            "exclude": [
+              "**/node_modules/**"
+			]
           }
         }
       }
@@ -106,7 +115,9 @@
             "tsConfig": [
               "e2e/tsconfig.e2e.json"
             ],
-            "exclude": []
+            "exclude": [
+              "**/node_modules/**"
+			]
           }
         }
       }

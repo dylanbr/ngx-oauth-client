@@ -2,30 +2,20 @@
   "compileOnSave": false,
   "compilerOptions": {
     "mapRoot": "./",
-    "target": "es5",
+    "sourceMap": true,
+    "declaration": true,
     "module": "es2015",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "sourceMap": true,
-    "noEmitHelpers": false,
-    "noImplicitAny": false,
-    "strictNullChecks": true,
-    "declaration": true,
-    "skipLibCheck": true,
-    "stripInternal": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": false,
-    "isolatedModules": false,
-    "lib": [
-      "dom",
-      "es6"
-    ],
-    "types": [
-      "jasmine"
-    ],
+	"importHelpers": true,
+    "target": "es5",
     "typeRoots": [
       "../node_modules/@types"
+    ],
+    "lib": [
+      "dom",
+      "es2018"
     ]
   }
 }
