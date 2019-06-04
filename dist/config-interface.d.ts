@@ -11,4 +11,5 @@ export interface NgxOAuthConfig {
     storage?: NgxOAuthStorage;
     storage_prefix?: string;
     storage_suffix?: string;
+    keep_refresh_token?: boolean;
 }

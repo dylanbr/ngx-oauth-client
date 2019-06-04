@@ -130,6 +130,9 @@ var NgxOAuthClient = /** @class */ (function () {
         }));
     };
     NgxOAuthClient.prototype.setToken = function (token) {
+        if (this.fetchConfig("keep_refresh_token") && !token.hasOwnProperty("refresh_token")) {
+            token.refresh_token = this.fetchToken("refresh_token");
+        }
         this.fetchConfig("storage").setItem(this.fetchStorageName(), JSON.stringify(token));
     };
     /**

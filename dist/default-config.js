@@ -3,6 +3,7 @@ export var DEFAULT_CFG = {
     token: 'oauth/token',
     key: 'my_key',
     secret: 'my_secret',
-    storage: localStorage
+    storage: localStorage,
+    keep_refresh_token: false
 };
 //# sourceMappingURL=default-config.js.map

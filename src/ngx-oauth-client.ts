@@ -153,6 +153,9 @@ export abstract class NgxOAuthClient {
   }
 
   setToken(token: NgxOAuthResponse) {
+    if(this.fetchConfig("keep_refresh_token") && !token.hasOwnProperty("refresh_token")) {
+      token.refresh_token = this.fetchToken("refresh_token");
+    }
     this.fetchConfig("storage").setItem(this.fetchStorageName(), JSON.stringify(token));
   }
 
@@ -216,7 +219,7 @@ export abstract class NgxOAuthClient {
     return this.http.request(method, this.buildEndpoint(endpoint), this.requestInterceptor(request)).pipe(
       map(res => this.responseInterceptor(request, res)),
       catchError(err => this.errorInterceptor(request, err))
-	);
+    );
   }
 
   /**
@@ -288,7 +291,7 @@ export function Configuration(config: NgxOAuthConfig) {
   return function <TFunction extends Function>(Target: TFunction): TFunction {
     Target.prototype.getConfig = function (): NgxOAuthConfig {
       if(!config.storage) {
-		  config.storage = localStorage;
+        config.storage = localStorage;
       }      
       return config;
     };
